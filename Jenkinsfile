@@ -9,8 +9,7 @@ pipeline {
     stages {
         stage('Clone Repo') {
             steps {
-                git 'https://github.com/sadokacacha/testing_docker.git'
-            }
+                git branch: 'main', url: 'https://github.com/sadokacacha/testing_docker.git'            }
         }
 
         stage('Build Docker Image') {
