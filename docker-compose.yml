@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   jenkins:
-    image: jenkins/jenkins:lts
+    image: jenkins-docker-enabled
     privileged: true
     user: root
     ports:
@@ -22,6 +22,13 @@ services:
       - "2375"
     volumes:
       - dind-storage:/var/lib/docker
+
+
+
+
+
+
+
 
 volumes:
   jenkins_home:
