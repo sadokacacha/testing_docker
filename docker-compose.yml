@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  jenkins:
+    image: jenkins/jenkins:lts
+    privileged: true
+    user: root
+    ports:
+      - 8080:8080
+      - 50000:50000
+    volumes:
+      - jenkins_home:/var/jenkins_home
+    environment:
+      - DOCKER_HOST=tcp://docker:2375
+
+  docker:
+    image: docker:dind
+    privileged: true
+    ports:
+      - "2375:2375"
+    expose:
+      - "2375"
+    volumes:
+      - dind-storage:/var/lib/docker
+
+volumes:
+  jenkins_home:
+  dind-storage:
